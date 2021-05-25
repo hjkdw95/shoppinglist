@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+/*reset*/
+button :focus,
+button :active, 
+input:focus,
+input:active, 
+textarea :focus,
+textarea :active {
+    box-shadow: none;
+    outline: none;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #faebd7;
+    color: #2d3436;
+    border: none;
+    margin: 0;
+}
+
+section {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    width: 300px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow:  20px 20px 60px #d7cab9,
+             -20px -20px 60px #fffff5;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 20px;
+    text-align: left;
+    margin: 0;
+    border-bottom: #2d3436 1px solid;
+    padding-bottom: 5px;
+}
+
+ul {
+	list-style: none;
+    margin-bottom: 30px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+input {
+    border: none;
+    border-bottom: #2d3436 1px solid;
+    background: none;
+    width: 245px;
+    font-size: 15px;
+}
+
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.fas {
+    color: #2d3436
+}
