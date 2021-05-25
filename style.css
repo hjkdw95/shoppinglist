@@ -14,6 +14,9 @@ textarea :active {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Noto Sans KR', sans-serif;
     background-color: #faebd7;
     color: #2d3436;
@@ -23,9 +26,7 @@ body {
 
 section {
     position: absolute;
-    top: 25%;
-    left: 40%;
-    width: 300px;
+    top: 15%;
     padding: 15px;
     border-radius: 15px;
     box-shadow:  20px 20px 60px #d7cab9,
@@ -42,8 +43,12 @@ h1 {
 }
 
 ul {
+    width: 300px;
+    max-height: 500px;
 	list-style: none;
     margin-bottom: 30px;
+    overflow-y: auto;
+    padding-right: 10px;
 }
 
 li {
@@ -52,12 +57,20 @@ li {
     margin-bottom: 10px;
 }
 
+footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    width: 90%;
+}
 
 input {
     border: none;
     border-bottom: #2d3436 1px solid;
     background: none;
-    width: 245px;
+    width: 100%;
     font-size: 15px;
 }
 
@@ -67,8 +80,5 @@ button {
     padding: 0;
     width: 20px;
     height: 20px;
-}
-
-.fas {
-    color: #2d3436
+    cursor: pointer;
 }

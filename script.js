@@ -1,4 +1,5 @@
-let content = document.querySelector("input")
+let content = document.querySelector("form")
+let listInput = document.querySelector("input")
 let sumbit = document.querySelector(".submit")
 let lists = document.querySelector("ul")
 
@@ -13,12 +14,15 @@ let idNumbers = 1;
 
 // 4. 지우는 함수 발동
 function deleteItem(event){
-    // 버튼 찾기
+    // ls 내부 데이터 삭제과정
+    
+    // ls reference - 버튼 찾기
     const removeBtn = event.target.parentNode;
-    // 버튼 부모 찾기
+    // ls reference - 버튼 부모 찾기
     const li = removeBtn.parentNode;
-    // 부모 li 지우기
+    // 현재 lists 내 li 지우기
     lists.removeChild(li);
+
     // localstroage에서 지우기
     const cleanList = listSave.filter(function(item){
         // 방금 막 지운 li의 id가 아닌 놈들만 ls에서 추출해내기
@@ -39,11 +43,14 @@ function saveLists(){
 function listUp(text){
     // 2. li 입력 - text 입력될 때마다 라인 업데이트해줘야되서 지역변수로 둠
     const list = document.createElement("li");
+
     //2-1. 내용 들어가는 구간
     const span = document.createElement("span");
     span.innerText = text;
+
     list.append(span);
     lists.append(list);
+
     // 저장소에서 구분할 수 있게 id지정
     const newId = idNumbers;
     idNumbers += 1;
@@ -59,20 +66,33 @@ function listUp(text){
 
     //2-2. delete버튼 생성
     const delBtn = document.createElement("button");
-    const delIcon = document.createElement("i");
-    delIcon.setAttribute('class', 'far fa-trash-alt');
-    delBtn.append(delIcon);
+    delBtn.setAttribute('class', 'trash');
+    delBtn.innerHTML = `<i class="fas fa-trash-alt"></i>`
     list.append(delBtn);
+
+
+    // 아이콘은 변하지 않으니까 innerHTML로 처리
+    //const delIcon = document.createElement("i");
+    //delIcon.setAttribute('class', 'fas fa-trash-alt');
+    //delBtn.append(delIcon);
+    
+
     //지우는 함수 발동
     delBtn.addEventListener("click", deleteItem);
 }
 
 // 1. input에서 얻어온 값을 list에 올려주는 함수로 보낸다
-function handleSubmit(event){
+function onAdd(event){
     event.preventDefault();
-    const currentValue = content.value;
+    const currentValue = listInput.value;
+    if(currentValue === ""){
+        listInput.focus();
+        return;
+    }
     listUp(currentValue);
-    content.value = "";
+    listInput.value = "";
+    listInput.focus();
+    
 }
 
 // 3. LS에 저장된 데이터를 화면에 보이게 할 함수
@@ -94,7 +114,8 @@ function loadLists(){
 
 function init(){
     loadLists();
-    sumbit.addEventListener("click", handleSubmit);
+    sumbit.addEventListener("click", onAdd);
+    content.addEventListener("submit",onAdd);
 }
 
-init()
+init();
