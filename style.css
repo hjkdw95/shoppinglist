@@ -27,6 +27,7 @@ body {
 section {
     position: absolute;
     top: 15%;
+    width: 320px;
     padding: 15px;
     border-radius: 15px;
     box-shadow:  20px 20px 60px #d7cab9,
@@ -43,7 +44,6 @@ h1 {
 }
 
 ul {
-    width: 300px;
     max-height: 500px;
 	list-style: none;
     margin-bottom: 30px;
